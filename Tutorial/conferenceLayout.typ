@@ -18,12 +18,21 @@
 #show title: set align(center)
 #show title: set block(below: 1.2em)
 
-#show heading: set align(center)
-#show heading: set text(
+#show heading.where(level: 1): set align(center)
+#show heading.where(level: 1): set text(
   size: 13pt,
   weight: "regular",
 )
-#show heading: smallcaps
+#show heading.where(level: 1): smallcaps
+
+#show heading.where(level: 2): set text(
+  size: 11pt,
+  weight: "regular",
+  style: "italic",
+)
+#show heading.where(level: 2): it => {
+  it.body + [.]
+}
 
 #place(
   top + center,
@@ -56,6 +65,13 @@
 
 = Introduction
 #lorem(300)
+
+Here, I would like to add some more content. Not sure if
+this is the best way to do it.
+
+== Motivation
+#lorem(13)
+
 
 = Related Work
 #lorem(200)
