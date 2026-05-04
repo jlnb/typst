@@ -1,3 +1,6 @@
+// Import packages
+#import "@preview/fletcher:0.5.8" as fletcher
+
 #let bericht(
   titel: "Projektbericht Titel",
   autor: "Dein Name",
@@ -85,3 +88,24 @@ Hier beginnt dein Bericht. Die Kopf- und Fußzeilen sind automatisch auf jeder S
 
 == Unterpunkt
 Dank der `grid`-Funktion im Template bleibt die Ausrichtung (links, mittig, rechts) immer exakt erhalten, egal wie lang der Text ist.
+
+#figure(
+  fletcher.diagram(
+    spacing: (10mm, 5mm), // wide columns, narrow rows
+    node-stroke: 1pt, // outline node shapes
+    edge-stroke: 1pt, // make lines thicker
+    mark-scale: 60%, // make arrowheads smaller
+    fletcher.edge((-2, 0), "r,u,r", "-|>", $f$, label-side: left),
+    fletcher.edge((-2, 0), "r,d,r", "..|>", $g$),
+    fletcher.node((0, -1), $F(s)$),
+    fletcher.node((0, +1), $G(s)$),
+    fletcher.node(enclose: ((0, -1), (0, +1)), stroke: teal, inset: 10pt, snap: false), // prevent edges snapping to this node
+    fletcher.edge((0, +1), (1, 0), "..|>", corner: left),
+    fletcher.edge((0, -1), (1, 0), "-|>", corner: right),
+    fletcher.node((1, 0), text(white, $ plus.o $), inset: 2pt, fill: black),
+    fletcher.edge("-|>"),
+  ),
+  caption: [
+    My first Fletcher diagram
+  ],
+)<fletcher>
